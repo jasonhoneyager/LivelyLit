@@ -10,13 +10,20 @@ namespace ProjectManager.Models
     {
         [Key]
         public int ID { get; set; }
+        [Display(Name ="Project Title:")]
         public string projectName { get; set; }
+        [Display(Name = "Category:")]
         public string projectCategory { get; set; }
         [DataType(DataType.MultilineText)]
+        [Display(Name = "Project Description:")]
         public string projectDescription { get; set; }
+        [Display(Name = "Requested Due Date:")]
         public DateTime projectRequestedDueDate { get; set; }
+        [Display(Name = "Payment Type:")]
         public string projectOfferedPaymentType { get; set; } //per word, per assignment
+        [Display(Name = "Payment Amount:")]
         public string projectOfferedPaymentAmount { get; set; }
+        [Display(Name = "Payment Method:")]
         public string projectPaymentMethod { get; set; } // paypal, check, escrow (paypal adaptive), etc...
 
     }
