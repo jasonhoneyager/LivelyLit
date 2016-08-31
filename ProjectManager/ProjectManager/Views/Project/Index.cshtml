@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ProjectManager.Models.ProjectModels>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.projectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projectCategory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projectDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projectRequestedDueDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projectOfferedPaymentType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projectOfferedPaymentAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projectPaymentMethod)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.projectName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projectCategory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projectDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projectRequestedDueDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projectOfferedPaymentType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projectOfferedPaymentAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projectPaymentMethod)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
