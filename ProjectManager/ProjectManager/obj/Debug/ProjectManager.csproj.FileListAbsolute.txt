@@ -84,3 +84,4 @@ C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug
 C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.csproj.GenerateResource.Cache
 C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.Migrations.update1.resources
 C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.Migrations.update2.resources
+C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.Migrations.update3.resources

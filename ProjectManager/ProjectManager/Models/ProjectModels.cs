@@ -13,7 +13,7 @@ namespace ProjectManager.Models
         [Display(Name ="Project Title:")]
         public string projectName { get; set; }
         [Display(Name = "Category:")]
-        public string projectCategory { get; set; }
+        public IEnumerable<CategoryModels> CategoryID { get; set; }
         [DataType(DataType.MultilineText)]
         [Display(Name = "Project Description:")]
         public string projectDescription { get; set; }

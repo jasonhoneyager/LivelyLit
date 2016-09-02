@@ -38,7 +38,10 @@ namespace ProjectManager.Controllers
         // GET: Project/Create
         public ActionResult Create()
         {
-            return View();
+            DropDownViewModel ddvm = new DropDownViewModel();
+            ddvm.Project = null;
+            ddvm.Categories = new SelectList(db.CategoryModels.ToList(), "ID", "categoryName", ddvm);
+            return View(ddvm);
         }
 
         // POST: Project/Create
@@ -46,16 +49,17 @@ namespace ProjectManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,projectName,projectCategory,projectDescription,projectRequestedDueDate,projectOfferedPaymentType,projectOfferedPaymentAmount,projectPaymentMethod")] ProjectModels projectModels)
+        public ActionResult Create(DropDownViewModel model)
         {
             if (ModelState.IsValid)
             {
-                db.ProjectModels.Add(projectModels);
+                model.Project.CategoryID = new List<CategoryModels>() { db.CategoryModels.Find(Convert.ToInt32(model.selectedCategory)) };
+                db.ProjectModels.Add(model.Project);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(projectModels);
+            return View(model);
         }
 
         // GET: Project/Edit/5
