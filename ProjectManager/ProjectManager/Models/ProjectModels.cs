@@ -25,6 +25,8 @@ namespace ProjectManager.Models
         public string projectOfferedPaymentAmount { get; set; }
         [Display(Name = "Payment Method:")]
         public string projectPaymentMethod { get; set; } // paypal, check, escrow (paypal adaptive), etc...
+        [Display(Name = "Project Status:")]
+        public IEnumerable<ProjectStatusModels> ProjectStatusID { get; set; }
 
     }
 }

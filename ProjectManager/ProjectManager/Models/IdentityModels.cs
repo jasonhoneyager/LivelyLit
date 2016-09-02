@@ -33,5 +33,7 @@ namespace ProjectManager.Models
         public System.Data.Entity.DbSet<ProjectManager.Models.ProjectModels> ProjectModels { get; set; }
 
         public System.Data.Entity.DbSet<ProjectManager.Models.CategoryModels> CategoryModels { get; set; }
+
+        public System.Data.Entity.DbSet<ProjectManager.Models.ProjectStatusModels> ProjectStatusModels { get; set; }
     }
 }

@@ -219,12 +219,17 @@
     <Compile Include="Migrations\201609021859491_update3.Designer.cs">
       <DependentUpon>201609021859491_update3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609022011374_update4.cs" />
+    <Compile Include="Migrations\201609022011374_update4.Designer.cs">
+      <DependentUpon>201609022011374_update4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CategoryModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ProjectModels.cs" />
+    <Compile Include="Models\ProjectStatusModels.cs" />
     <Compile Include="Models\ProjectViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -366,6 +371,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609021859491_update3.resx">
       <DependentUpon>201609021859491_update3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609022011374_update4.resx">
+      <DependentUpon>201609022011374_update4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
