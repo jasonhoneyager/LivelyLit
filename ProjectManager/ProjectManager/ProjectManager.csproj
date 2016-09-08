@@ -203,25 +203,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201608292011218_initial.cs" />
-    <Compile Include="Migrations\201608292011218_initial.Designer.cs">
-      <DependentUpon>201608292011218_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201609082006353_initial.cs" />
+    <Compile Include="Migrations\201609082006353_initial.Designer.cs">
+      <DependentUpon>201609082006353_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201608302104452_update1.cs" />
-    <Compile Include="Migrations\201608302104452_update1.Designer.cs">
-      <DependentUpon>201608302104452_update1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608311804316_update2.cs" />
-    <Compile Include="Migrations\201608311804316_update2.Designer.cs">
-      <DependentUpon>201608311804316_update2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201609021859491_update3.cs" />
-    <Compile Include="Migrations\201609021859491_update3.Designer.cs">
-      <DependentUpon>201609021859491_update3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201609022011374_update4.cs" />
-    <Compile Include="Migrations\201609022011374_update4.Designer.cs">
-      <DependentUpon>201609022011374_update4.cs</DependentUpon>
+    <Compile Include="Migrations\201609082024486_update1.cs" />
+    <Compile Include="Migrations\201609082024486_update1.Designer.cs">
+      <DependentUpon>201609082024486_update1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -338,16 +326,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Project\Create.cshtml" />
-    <Content Include="Views\Project\Delete.cshtml" />
-    <Content Include="Views\Project\Details.cshtml" />
-    <Content Include="Views\Project\Edit.cshtml" />
-    <Content Include="Views\Project\Index.cshtml" />
     <Content Include="Views\Category\Create.cshtml" />
     <Content Include="Views\Category\Delete.cshtml" />
     <Content Include="Views\Category\Details.cshtml" />
     <Content Include="Views\Category\Edit.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Project\Create.cshtml" />
+    <Content Include="Views\Project\Delete.cshtml" />
+    <Content Include="Views\Project\Details.cshtml" />
+    <Content Include="Views\Project\Edit.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -360,20 +348,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608292011218_initial.resx">
-      <DependentUpon>201608292011218_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201609082006353_initial.resx">
+      <DependentUpon>201609082006353_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608302104452_update1.resx">
-      <DependentUpon>201608302104452_update1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608311804316_update2.resx">
-      <DependentUpon>201608311804316_update2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609021859491_update3.resx">
-      <DependentUpon>201609021859491_update3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609022011374_update4.resx">
-      <DependentUpon>201609022011374_update4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201609082024486_update1.resx">
+      <DependentUpon>201609082024486_update1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

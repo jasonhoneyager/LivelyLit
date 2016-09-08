@@ -77,12 +77,8 @@ C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\bin\Micro
 C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.csprojResolveAssemblyReference.cache
 C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.dll
 C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.pdb
 C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.Migrations.initial.resources
 C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.csproj.GenerateResource.Cache
 C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.Migrations.update1.resources
-C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.Migrations.update2.resources
-C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.Migrations.update3.resources
-C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.Migrations.update4.resources

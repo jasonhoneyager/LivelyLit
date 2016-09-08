@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -12,8 +13,12 @@ namespace ProjectManager.Models
         public int ID { get; set; }
         [Display(Name ="Project Title:")]
         public string projectName { get; set; }
+
+        [ForeignKey("Category")]
         [Display(Name = "Category:")]
-        public IEnumerable<CategoryModels> CategoryID { get; set; }
+        public int projectCategoryID { get; set; }
+        public virtual CategoryModels Category { get; set; }
+
         [DataType(DataType.MultilineText)]
         [Display(Name = "Project Description:")]
         public string projectDescription { get; set; }
@@ -24,9 +29,12 @@ namespace ProjectManager.Models
         [Display(Name = "Payment Amount:")]
         public string projectOfferedPaymentAmount { get; set; }
         [Display(Name = "Payment Method:")]
-        public string projectPaymentMethod { get; set; } // paypal, check, escrow (paypal adaptive), etc...
+        public string projectPaymentMethod { get; set; } // paypal, check, escrow (paypal adaptive), etc... 
+
+        [ForeignKey("ProjectStatus")]
+        public int projectStatusID { get; set; }
         [Display(Name = "Project Status:")]
-        public IEnumerable<ProjectStatusModels> ProjectStatusID { get; set; }
+        public virtual ProjectStatusModels ProjectStatus { get; set; }
 
     }
 }

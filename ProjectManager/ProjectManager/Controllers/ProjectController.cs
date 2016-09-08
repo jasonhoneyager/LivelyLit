@@ -17,7 +17,8 @@ namespace ProjectManager.Controllers
         // GET: Project
         public ActionResult Index()
         {
-            return View(db.ProjectModels.ToList());
+            var projectModels = db.ProjectModels.Include(p => p.Category).Include(p => p.ProjectStatus);
+            return View(projectModels.ToList());
         }
 
         // GET: Project/Details/5
@@ -38,10 +39,9 @@ namespace ProjectManager.Controllers
         // GET: Project/Create
         public ActionResult Create()
         {
-            DropDownViewModel ddvm = new DropDownViewModel();
-            ddvm.Project = null;
-            ddvm.Categories = new SelectList(db.CategoryModels.ToList(), "ID", "categoryName", ddvm);
-            return View(ddvm);
+            ViewBag.projectCategoryID = new SelectList(db.CategoryModels, "ID", "categoryName");
+            ViewBag.projectStatusID = new SelectList(db.ProjectStatusModels, "ID", "projectStatusName");
+            return View();
         }
 
         // POST: Project/Create
@@ -49,17 +49,18 @@ namespace ProjectManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(DropDownViewModel model)
+        public ActionResult Create([Bind(Include = "ID,projectName,projectCategoryID,projectDescription,projectRequestedDueDate,projectOfferedPaymentType,projectOfferedPaymentAmount,projectPaymentMethod,projectStatusID")] ProjectModels projectModels)
         {
             if (ModelState.IsValid)
             {
-                model.Project.CategoryID = new List<CategoryModels>() { db.CategoryModels.Find(Convert.ToInt32(model.selectedCategory)) };
-                db.ProjectModels.Add(model.Project);
+                db.ProjectModels.Add(projectModels);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(model);
+            ViewBag.projectCategoryID = new SelectList(db.CategoryModels, "ID", "categoryName", projectModels.projectCategoryID);
+            ViewBag.projectStatusID = new SelectList(db.ProjectStatusModels, "ID", "projectStatusName", projectModels.projectStatusID);
+            return View(projectModels);
         }
 
         // GET: Project/Edit/5
@@ -74,6 +75,8 @@ namespace ProjectManager.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.projectCategoryID = new SelectList(db.CategoryModels, "ID", "categoryName", projectModels.projectCategoryID);
+            ViewBag.projectStatusID = new SelectList(db.ProjectStatusModels, "ID", "projectStatusName", projectModels.projectStatusID);
             return View(projectModels);
         }
 
@@ -82,7 +85,7 @@ namespace ProjectManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,projectName,projectCategory,projectDescription,projectRequestedDueDate,projectOfferedPaymentType,projectOfferedPaymentAmount,projectPaymentMethod")] ProjectModels projectModels)
+        public ActionResult Edit([Bind(Include = "ID,projectName,projectCategoryID,projectDescription,projectRequestedDueDate,projectOfferedPaymentType,projectOfferedPaymentAmount,projectPaymentMethod,projectStatusID")] ProjectModels projectModels)
         {
             if (ModelState.IsValid)
             {
@@ -90,6 +93,8 @@ namespace ProjectManager.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.projectCategoryID = new SelectList(db.CategoryModels, "ID", "categoryName", projectModels.projectCategoryID);
+            ViewBag.projectStatusID = new SelectList(db.ProjectStatusModels, "ID", "projectStatusName", projectModels.projectStatusID);
             return View(projectModels);
         }
 
