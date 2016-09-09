@@ -17,7 +17,7 @@ namespace ProjectManager.Controllers
         // GET: Project
         public ActionResult Index()
         {
-            var projectModels = db.ProjectModels.Include(p => p.Category).Include(p => p.ProjectStatus);
+            var projectModels = db.ProjectModels.Include(p => p.Category).Include(p => p.ProjectStatus).Where(x => x.projectClientID == System.Web.HttpContext.Current.User.Identity.Name);
             return View(projectModels.ToList());
         }
 
@@ -49,10 +49,12 @@ namespace ProjectManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,projectName,projectCategoryID,projectDescription,projectRequestedDueDate,projectOfferedPaymentType,projectOfferedPaymentAmount,projectPaymentMethod,projectStatusID")] ProjectModels projectModels)
+        public ActionResult Create([Bind(Include = "ID,projectName,projectCategoryID,projectDescription,projectRequestedDueDate,projectOfferedPaymentType,projectOfferedPaymentAmount,projectPaymentMethod")] ProjectModels projectModels)
         {
             if (ModelState.IsValid)
             {
+                projectModels.projectClientID = System.Web.HttpContext.Current.User.Identity.Name;
+                projectModels.projectStatusID = 1;
                 db.ProjectModels.Add(projectModels);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -85,7 +87,7 @@ namespace ProjectManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,projectName,projectCategoryID,projectDescription,projectRequestedDueDate,projectOfferedPaymentType,projectOfferedPaymentAmount,projectPaymentMethod,projectStatusID")] ProjectModels projectModels)
+        public ActionResult Edit([Bind(Include = "ID,projectName,projectCategoryID,projectClientID,projectDescription,projectRequestedDueDate,projectOfferedPaymentType,projectOfferedPaymentAmount,projectPaymentMethod,projectStatusID")] ProjectModels projectModels)
         {
             if (ModelState.IsValid)
             {

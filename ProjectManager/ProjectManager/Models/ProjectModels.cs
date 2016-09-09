@@ -14,6 +14,8 @@ namespace ProjectManager.Models
         [Display(Name ="Project Title:")]
         public string projectName { get; set; }
 
+        public string projectClientID { get; set; }
+
         [ForeignKey("Category")]
         [Display(Name = "Category:")]
         public int projectCategoryID { get; set; }

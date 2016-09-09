@@ -13,11 +13,8 @@ namespace ProjectManager.Migrations
                     {
                         ID = c.Int(nullable: false, identity: true),
                         categoryName = c.String(),
-                        ProjectModels_ID = c.Int(),
                     })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.ProjectModels", t => t.ProjectModels_ID)
-                .Index(t => t.ProjectModels_ID);
+                .PrimaryKey(t => t.ID);
             
             CreateTable(
                 "dbo.ProjectModels",
@@ -25,6 +22,8 @@ namespace ProjectManager.Migrations
                     {
                         ID = c.Int(nullable: false, identity: true),
                         projectName = c.String(),
+                        projectClientID = c.String(),
+                        projectCategoryID = c.Int(nullable: false),
                         projectDescription = c.String(),
                         projectRequestedDueDate = c.DateTime(nullable: false),
                         projectOfferedPaymentType = c.String(),
@@ -33,7 +32,9 @@ namespace ProjectManager.Migrations
                         projectStatusID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.CategoryModels", t => t.projectCategoryID, cascadeDelete: true)
                 .ForeignKey("dbo.ProjectStatusModels", t => t.projectStatusID, cascadeDelete: true)
+                .Index(t => t.projectCategoryID)
                 .Index(t => t.projectStatusID);
             
             CreateTable(
@@ -122,7 +123,7 @@ namespace ProjectManager.Migrations
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.ProjectModels", "projectStatusID", "dbo.ProjectStatusModels");
-            DropForeignKey("dbo.CategoryModels", "ProjectModels_ID", "dbo.ProjectModels");
+            DropForeignKey("dbo.ProjectModels", "projectCategoryID", "dbo.CategoryModels");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
@@ -130,7 +131,7 @@ namespace ProjectManager.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.ProjectModels", new[] { "projectStatusID" });
-            DropIndex("dbo.CategoryModels", new[] { "ProjectModels_ID" });
+            DropIndex("dbo.ProjectModels", new[] { "projectCategoryID" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
