@@ -17,8 +17,16 @@ namespace ProjectManager.Controllers
         // GET: Project
         public ActionResult Index()
         {
-            var projectModels = db.ProjectModels.Include(p => p.Category).Include(p => p.ProjectStatus).Where(x => x.projectClientID == System.Web.HttpContext.Current.User.Identity.Name);
-            return View(projectModels.ToList());
+            if (User.IsInRole("Writer"))
+            {
+                var projectModels = db.ProjectModels.Include(p => p.Category).Include(p => p.ProjectStatus);
+                return View(projectModels.ToList());
+            }
+            else
+            {
+                var projectModels = db.ProjectModels.Include(p => p.Category).Include(p => p.ProjectStatus).Where(x => x.projectClientID == System.Web.HttpContext.Current.User.Identity.Name);
+                return View(projectModels.ToList());
+            }
         }
 
         // GET: Project/Details/5
@@ -41,6 +49,8 @@ namespace ProjectManager.Controllers
         {
             ViewBag.projectCategoryID = new SelectList(db.CategoryModels, "ID", "categoryName");
             ViewBag.projectStatusID = new SelectList(db.ProjectStatusModels, "ID", "projectStatusName");
+            ViewBag.projectPaymentTypeID = new SelectList(db.PaymentTypeModels, "ID", "projectPaymentType");
+            ViewBag.projectPaymentMethodID = new SelectList(db.PaymentMethodModels, "ID", "projectPaymentMethod");
             return View();
         }
 
@@ -49,11 +59,11 @@ namespace ProjectManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,projectName,projectCategoryID,projectDescription,projectRequestedDueDate,projectOfferedPaymentType,projectOfferedPaymentAmount,projectPaymentMethod")] ProjectModels projectModels)
+        public ActionResult Create([Bind(Include = "ID,projectName,projectCategoryID,projectDescription,projectRequestedDueDate,projectPaymentTypeID,projectOfferedPaymentAmount,projectPaymentMethodID")] ProjectModels projectModels)
         {
             if (ModelState.IsValid)
             {
-                projectModels.projectClientID = System.Web.HttpContext.Current.User.Identity.Name;
+                projectModels.projectClientID = User.Identity.Name;
                 projectModels.projectStatusID = 1;
                 db.ProjectModels.Add(projectModels);
                 db.SaveChanges();
@@ -62,6 +72,7 @@ namespace ProjectManager.Controllers
 
             ViewBag.projectCategoryID = new SelectList(db.CategoryModels, "ID", "categoryName", projectModels.projectCategoryID);
             ViewBag.projectStatusID = new SelectList(db.ProjectStatusModels, "ID", "projectStatusName", projectModels.projectStatusID);
+            
             return View(projectModels);
         }
 
@@ -79,6 +90,8 @@ namespace ProjectManager.Controllers
             }
             ViewBag.projectCategoryID = new SelectList(db.CategoryModels, "ID", "categoryName", projectModels.projectCategoryID);
             ViewBag.projectStatusID = new SelectList(db.ProjectStatusModels, "ID", "projectStatusName", projectModels.projectStatusID);
+            ViewBag.projectPaymentTypeID = new SelectList(db.PaymentTypeModels, "ID", "projectPaymentType", projectModels.projectPaymentTypeID);
+            ViewBag.projectPaymentMethodID = new SelectList(db.PaymentMethodModels, "ID", "projectPaymentMethod", projectModels.projectPaymentMethodID);
             return View(projectModels);
         }
 
@@ -87,7 +100,7 @@ namespace ProjectManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,projectName,projectCategoryID,projectClientID,projectDescription,projectRequestedDueDate,projectOfferedPaymentType,projectOfferedPaymentAmount,projectPaymentMethod,projectStatusID")] ProjectModels projectModels)
+        public ActionResult Edit([Bind(Include = "ID,projectName,projectClientID,projectCategoryID,projectDescription,projectRequestedDueDate,projectPaymentTypeID,projectOfferedPaymentAmount,projectPaymentMethodID,projectStatusID")] ProjectModels projectModels)
         {
             if (ModelState.IsValid)
             {
@@ -97,6 +110,8 @@ namespace ProjectManager.Controllers
             }
             ViewBag.projectCategoryID = new SelectList(db.CategoryModels, "ID", "categoryName", projectModels.projectCategoryID);
             ViewBag.projectStatusID = new SelectList(db.ProjectStatusModels, "ID", "projectStatusName", projectModels.projectStatusID);
+            ViewBag.projectPaymentTypeID = new SelectList(db.PaymentTypeModels, "ID", "projectPaymentType", projectModels.projectPaymentTypeID);
+            ViewBag.projectPaymentMethodID = new SelectList(db.PaymentMethodModels, "ID", "projectPaymentMethod", projectModels.projectPaymentMethodID);
             return View(projectModels);
         }
 

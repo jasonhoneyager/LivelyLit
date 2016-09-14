@@ -25,4 +25,5 @@ textarea {
 
 .multi-line {
     max-width: 50%;
+    resize: none;
 }

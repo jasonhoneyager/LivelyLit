@@ -26,6 +26,17 @@ namespace ProjectManager.Migrations
                 new Models.ProjectStatusModels { projectStatusName = "Completed, Payment Received" }
                 );
 
+            context.PaymentTypeModels.AddOrUpdate(p => p.projectPaymentType,
+                new PaymentTypeModels { projectPaymentType = "Per Word" },
+                new PaymentTypeModels { projectPaymentType = "Up Front" }
+                );
+
+            context.PaymentMethodModels.AddOrUpdate(p => p.projectPaymentMethod,
+                new PaymentMethodModels { projectPaymentMethod = "PayPal" },
+                new PaymentMethodModels { projectPaymentMethod = "Check" },
+                new PaymentMethodModels { projectPaymentMethod = "Escrow/Upfront" }
+                );
+
             if (!context.Roles.Any(r => r.Name == "Writer"))
             {
                 var store = new RoleStore<IdentityRole>(context);

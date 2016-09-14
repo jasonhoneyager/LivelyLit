@@ -11,6 +11,7 @@ namespace ProjectManager.Models
     {
         [Key]
         public int ID { get; set; }
+        [Display(Name = "Project Status:")]
         public string projectStatusName { get; set; }
     }
 }

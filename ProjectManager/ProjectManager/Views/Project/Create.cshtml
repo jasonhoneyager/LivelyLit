@@ -15,9 +15,6 @@
         <h4>ProjectModels</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.projectClientID)
-        @Html.HiddenFor(model => model.projectStatusID)
-
         <div class="form-group">
             @Html.LabelFor(model => model.projectName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -27,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.projectCategoryID, "projectCategoryID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.projectCategoryID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("projectCategoryID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.projectCategoryID, "", new { @class = "text-danger" })
@@ -51,10 +48,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.projectOfferedPaymentType, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.projectPaymentTypeID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.projectOfferedPaymentType, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.projectOfferedPaymentType, "", new { @class = "text-danger" })
+                @Html.DropDownList("projectPaymentTypeID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.projectPaymentTypeID, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -67,10 +64,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.projectPaymentMethod, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.projectPaymentMethodID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.projectPaymentMethod, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.projectPaymentMethod, "", new { @class = "text-danger" })
+                @Html.DropDownList("projectPaymentMethodID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.projectPaymentMethodID, "", new { @class = "text-danger" })
             </div>
         </div>
 

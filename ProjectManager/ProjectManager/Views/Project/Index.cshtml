@@ -21,19 +21,22 @@
             @Html.DisplayNameFor(model => model.projectName)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.projectClientID)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.projectDescription)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.projectRequestedDueDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.projectOfferedPaymentType)
+            @Html.DisplayNameFor(model => model.PaymentType.projectPaymentType)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.projectOfferedPaymentAmount)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.projectPaymentMethod)
+            @Html.DisplayNameFor(model => model.PaymentMethod.projectPaymentMethod)
         </th>
         <th></th>
     </tr>
@@ -50,19 +53,22 @@
             @Html.DisplayFor(modelItem => item.projectName)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.projectClientID)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.projectDescription)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.projectRequestedDueDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.projectOfferedPaymentType)
+            @Html.DisplayFor(modelItem => item.PaymentType.projectPaymentType)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.projectOfferedPaymentAmount)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.projectPaymentMethod)
+            @Html.DisplayFor(modelItem => item.PaymentMethod.projectPaymentMethod)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

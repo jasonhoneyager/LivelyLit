@@ -14,6 +14,7 @@ namespace ProjectManager.Models
         [Display(Name ="Project Title:")]
         public string projectName { get; set; }
 
+        [Display(Name ="Client Name:")]
         public string projectClientID { get; set; }
 
         [ForeignKey("Category")]
@@ -26,16 +27,26 @@ namespace ProjectManager.Models
         public string projectDescription { get; set; }
         [Display(Name = "Requested Due Date:")]
         public DateTime projectRequestedDueDate { get; set; }
-        [Display(Name = "Payment Type:")]
-        public string projectOfferedPaymentType { get; set; } //per word, per assignment
+
+        [ForeignKey("PaymentType")]
+        [Display(Name ="Payment Type")]
+        public int projectPaymentTypeID { get; set; }
+
+        public virtual PaymentTypeModels PaymentType { get; set; } //per word, per assignment
+
+
         [Display(Name = "Payment Amount:")]
         public string projectOfferedPaymentAmount { get; set; }
+
+        [ForeignKey("PaymentMethod")]
         [Display(Name = "Payment Method:")]
-        public string projectPaymentMethod { get; set; } // paypal, check, escrow (paypal adaptive), etc... 
+        public int projectPaymentMethodID { get; set; }
+
+        public virtual PaymentMethodModels PaymentMethod { get; set; } // paypal, check, escrow (paypal adaptive), etc... 
 
         [ForeignKey("ProjectStatus")]
-        public int projectStatusID { get; set; }
         [Display(Name = "Project Status:")]
+        public int projectStatusID { get; set; }
         public virtual ProjectStatusModels ProjectStatus { get; set; }
 
     }
