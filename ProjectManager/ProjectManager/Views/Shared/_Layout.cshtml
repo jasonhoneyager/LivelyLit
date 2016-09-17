@@ -13,6 +13,11 @@
     <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")"></script>
     <script src="@Url.Content("~/Scripts/jquery-ui-1.10.4.min.js")"></script>
 
+    <link rel='stylesheet' href='~/JQuery/fullcalendar.css' />
+    <script src='~/JQuery/lib/jquery.min.js'></script>
+    <script src='~/JQuery/lib/moment.min.js'></script>
+    <script src='~/JQuery/fullcalendar.js'></script>
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -30,9 +35,10 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Available Projects", "ProjectCalendar", "Project")</li>
                     @if (User.IsInRole("Writer"))
                     {
-                        <li>@Html.ActionLink("Available Projects", "Index", "Project")</li>
+                        <li>@Html.ActionLink("Available Projects", "ProjectCalendar", "Project")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -47,7 +53,7 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
+@*    @Scripts.Render("~/bundles/jquery")  *@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

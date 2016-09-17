@@ -314,6 +314,13 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\Backgrounds\lined_paper.png" />
+    <Content Include="JQuery\fullcalendar.css" />
+    <Content Include="JQuery\fullcalendar.js" />
+    <Content Include="JQuery\fullcalendar.min.css" />
+    <Content Include="JQuery\fullcalendar.min.js" />
+    <Content Include="JQuery\fullcalendar.print.css" />
+    <Content Include="JQuery\gcal.js" />
+    <Content Include="JQuery\locale-all.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -380,9 +387,11 @@
     <Content Include="Views\Project\Details.cshtml" />
     <Content Include="Views\Project\Edit.cshtml" />
     <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\Project\ProjectCalendar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="JQuery\lib\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

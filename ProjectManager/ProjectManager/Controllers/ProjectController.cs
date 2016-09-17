@@ -29,6 +29,29 @@ namespace ProjectManager.Controllers
             }
         }
 
+        public ActionResult ProjectCalendar()
+        {
+            if (User.IsInRole("Writer"))
+            {
+                var calendarItems = PopulateCalendar();
+                return View(calendarItems);
+            }
+            else
+            {
+                return RedirectToRoute(new
+                {
+                    Controller = "Project",
+                    Action = "Index"
+                });
+            }
+        }
+
+        private IQueryable<ProjectModels> PopulateCalendar()
+        {
+            var calendarItems = from ProjectModels in db.ProjectModels where ProjectModels.projectStatusID != 1 where ProjectModels.projectStatusID != 2 select ProjectModels;
+            return calendarItems;
+        }
+
         // GET: Project/Details/5
         public ActionResult Details(int? id)
         {

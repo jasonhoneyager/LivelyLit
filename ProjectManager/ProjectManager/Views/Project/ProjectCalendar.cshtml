@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "ProjectCalendar";
+}
+
+<h2>ProjectCalendar</h2>
+<script>
+        $(document).ready(function () {
+
+            // page is now ready, initialize the calendar...
+            $('#calendar').fullCalendar({
+                events: {
+                   
+                },
+                header: {
+                    left: "title",
+                    center: "",
+                    right: "prev,next"
+                }
+                // put your options and callbacks here
+            })
+        });
+
+</script>
+
+
+<div id="calendar"></div>
