@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<ProjectManager.Models.EventViewModel>
+@{
     ViewBag.Title = "ProjectCalendar";
 }
 
@@ -8,9 +9,7 @@
 
             // page is now ready, initialize the calendar...
             $('#calendar').fullCalendar({
-                events: {
-                   
-                },
+                events: @Html.Raw(Json.Encode(Model)),
                 header: {
                     left: "title",
                     center: "",

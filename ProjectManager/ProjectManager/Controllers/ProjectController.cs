@@ -33,8 +33,25 @@ namespace ProjectManager.Controllers
         {
             if (User.IsInRole("Writer"))
             {
-                var calendarItems = PopulateCalendar();
-                return View(calendarItems);
+                var calendarevents = new List<EventViewModel>();
+                foreach (ProjectModels project in db.ProjectModels)
+                {
+                    var events = new EventViewModel();
+                    events.title = project.projectName;
+                    events.start = project.projectRequestedDueDate.ToShortDateString();
+//1   Pending Approval
+//2   Declined
+//3   Accepted
+//4   Work In Progress
+//5   Completed, Awaiting Payment
+//6   Completed, Payment Received
+                    if (project.projectStatusID == 4)
+                    {
+                        events.color = "orange";
+                    }
+                    calendarevents.Add(events);
+                }
+                return View(calendarevents);
             }
             else
             {
