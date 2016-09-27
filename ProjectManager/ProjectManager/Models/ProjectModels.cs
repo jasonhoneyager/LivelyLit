@@ -28,13 +28,6 @@ namespace ProjectManager.Models
         [Display(Name = "Requested Due Date:")]
         public DateTime projectRequestedDueDate { get; set; }
 
-        [ForeignKey("PaymentType")]
-        [Display(Name ="Payment Type")]
-        public int projectPaymentTypeID { get; set; }
-
-        public virtual PaymentTypeModels PaymentType { get; set; } //per word, per assignment
-
-
         [Display(Name = "Payment Amount:")]
         public string projectOfferedPaymentAmount { get; set; }
 

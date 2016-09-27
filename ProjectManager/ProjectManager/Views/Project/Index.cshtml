@@ -12,17 +12,14 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Category.categoryName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProjectStatus.projectStatusName)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.projectName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.projectClientID)
+            @Html.DisplayNameFor(model => model.Category.categoryName)
         </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.projectClientID)
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.projectDescription)
         </th>
@@ -30,13 +27,13 @@
             @Html.DisplayNameFor(model => model.projectRequestedDueDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PaymentType.projectPaymentType)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.projectOfferedPaymentAmount)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PaymentMethod.projectPaymentMethod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectStatus.projectStatusName)
         </th>
         <th></th>
     </tr>
@@ -44,25 +41,19 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Category.categoryName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProjectStatus.projectStatusName)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.projectName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.projectClientID)
+            @Html.DisplayFor(modelItem => item.Category.categoryName)
         </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.projectClientID)
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.projectDescription)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.projectRequestedDueDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaymentType.projectPaymentType)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.projectOfferedPaymentAmount)
@@ -71,8 +62,10 @@
             @Html.DisplayFor(modelItem => item.PaymentMethod.projectPaymentMethod)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.DisplayFor(modelItem => item.ProjectStatus.projectStatusName)
+        </td>
+        <td>
+            @Html.ActionLink("Change", "Change", new { id=item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>

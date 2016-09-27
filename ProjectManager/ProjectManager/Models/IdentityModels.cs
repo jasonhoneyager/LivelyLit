@@ -36,8 +36,6 @@ namespace ProjectManager.Models
 
         public System.Data.Entity.DbSet<ProjectManager.Models.ProjectStatusModels> ProjectStatusModels { get; set; }
 
-        public DbSet<ProjectManager.Models.PaymentTypeModels> PaymentTypeModels { get; set; }
-
         public DbSet<ProjectManager.Models.PaymentMethodModels> PaymentMethodModels { get; set; }
     }
 }

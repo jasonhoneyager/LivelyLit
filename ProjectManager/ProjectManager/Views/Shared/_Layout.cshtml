@@ -20,41 +20,63 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Available Projects", "ProjectCalendar", "Project")</li>
-                    @if (User.IsInRole("Writer"))
-                    {
-                        <li>@Html.ActionLink("Available Projects", "ProjectCalendar", "Project")</li>
-                    }
-                </ul>
-                @Html.Partial("_LoginPartial")
+    @if (User.IsInRole("Writer"))
+    {
+        <div class="container admin-buffer">
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        @Html.ActionLink("Admin Panel", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Project", "Create", "Project")</li>                            
+                            <li>@Html.ActionLink("Available Projects", "ProjectCalendar", "Project")</li>
+                            <li>@Html.ActionLink("Create Category", "Create", "Category")</li>
+                            @*<li>@Html.ActionLink("", "", "")</li>*@
+                            
+                        </ul>
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Lively Literature</p>
-        </footer>
-    </div>
+    }
+    
+<div class="container body-content">
+    @RenderBody()
+    <hr />
+    <footer>
+        <p><center>@Html.ActionLink("Home", "Index", "Home") &nbsp; @Html.ActionLink("About", "About", "Home") &nbsp; @Html.ActionLink("Contact", "Contact", "Home") &nbsp;     
+        @using Microsoft.AspNet.Identity
+        @if (Request.IsAuthenticated)
+        {
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+            {
+                @Html.AntiForgeryToken()
+                <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+            }
+        }
+        else
+        {
+            @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+        }</center>
+            &copy; @DateTime.Now.Year - Lively Literature
+        </p>
+    </footer>
+</div>
 
-@*    @Scripts.Render("~/bundles/jquery")  *@
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
+        @*    @Scripts.Render("~/bundles/jquery")  *@
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+
+    </body>
 </html>

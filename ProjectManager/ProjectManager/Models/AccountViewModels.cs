@@ -79,6 +79,38 @@ namespace ProjectManager.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name ="Company Name")]
+        public string CompanyName { get; set; }
+
+        [Required]
+        [Display(Name = "Contact Name")]
+        public string ContactName { get; set; }
+
+        [Required]
+        [Display(Name = "Address 1")]
+        public string Street1 { get; set; }
+
+        [Display(Name = "Address 2")]
+        public string Street2 { get; set; }
+
+        [Required]
+        [Display(Name = "City")]
+        public string City { get; set; }
+
+        [Required]
+        [Display(Name = "State")]
+        public string State { get; set; }
+
+        [Required]
+        [Display(Name = "Zip")]
+        public string Zip { get; set; }
+
+        [Required]
+        [Display(Name = "Phone")]
+        public string Phone { get; set; }
+
     }
 
     public class ResetPasswordViewModel

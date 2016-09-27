@@ -2,30 +2,78 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="container banner">
+    <div class="col-md-4">
+        <img src="~/Images/Photos/Lively-Lit-Logo.jpg" alt="Lively Literature Logo" />
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-7">
+        <h1>Lively Literature</h1>
+        <p>Title page</p>
+        @using Microsoft.AspNet.Identity
+        @if (Request.IsAuthenticated)
+        {
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm"}))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+            }
+        }
+        else
+        {
+            @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+        }
+    </div>
 </div>
+<div class="container page-info">
+    <div class="row left right">
+        <div class="col-lg-8">
+            <img src="~/Images/Photos/Kansas-City-Public-Library-Missouri_1.jpg" />
+        </div>
+        <div class="col-lg-4">
+            <div class="row">
+                @Html.ActionLink("Request New", "Create", "Project")
+            </div>
+            <br />
+            <div class="row">
+                @Html.ActionLink("View Pending", "Index", "Project")
+            </div>
+            <br />
+            <div class="row">
+                @Html.ActionLink("Project", "Create", "Project")
+            </div>
+            <br />
+            <div class="row">
+                @Html.ActionLink("Project", "Create", "Project")
+            </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="~/Category/Create">Category &raquo;</a></p>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="~/Project/Create">Project &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+</div>
+<div class="container page-info">
+    <div class="row">
+        <div class="col-md-4 border-right">
+            <h2>About Michelle</h2>
+            <p>
+                I’ve been obsessed with stories and great writing for as long as I can remember.
+                I even have a BA in English professional writing from Mount Mary University here in Southeastern Wisconsin.
+                Starting Lively Literature Editorial and Writing Services was just a natural extension of my personality.
+            </p>
+        </div>
+        
+        <div class="col-md-4 borders">
+            <h2>Publications</h2>
+            <p>
+                View my online portfolio, as well as some of my currently running articles.
+            </p>
+            <p><a class="btn btn-default" href="https://www.clippings.me/michellelovrine">Continue &raquo;</a></p>
+        </div>
+        
+        <div class="col-md-4 border-left">
+            <h2>Buy My Book</h2>
+            <p>I am also a self published fantasy author.  Find out more about my book, and how to purchase it here.</p>
+            
+        </div>
     </div>
 </div>

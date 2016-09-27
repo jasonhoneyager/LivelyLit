@@ -103,8 +103,6 @@ C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\bin\Googl
 C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\bin\Google.Apis.PlatformServices.xml
 C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\bin\log4net.xml
 C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\bin\Zlib.Portable.xml
+C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.csprojResolveAssemblyReference.cache
 C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.Migrations.initial.resources
 C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.csproj.GenerateResource.Cache
-C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.Migrations.update1.resources
-C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.Migrations.update2.resources
-C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.csprojResolveAssemblyReference.cache

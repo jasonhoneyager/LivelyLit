@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Change Project Status</h2>
 
 
 @using (Html.BeginForm())
@@ -12,12 +12,68 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>ProjectModels</h4>
+        @*<h4>ProjectModels</h4>*@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.projectName)
+        @Html.HiddenFor(model => model.projectClientID)
+        @Html.HiddenFor(model => model.projectDescription)
+        @Html.HiddenFor(model => model.projectRequestedDueDate)
+        @Html.HiddenFor(model => model.projectOfferedPaymentAmount)
+        @Html.HiddenFor(model => model.projectPaymentMethodID)
+        <dl class="dl-horizontal">
 
-        <div class="form-group">
+            <dt>
+                @Html.DisplayNameFor(model => model.projectClientID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.projectClientID)
+            </dd>
+            
+            <dt>
+                @Html.DisplayNameFor(model => model.projectName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.projectName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.projectDescription)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.projectDescription)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.projectRequestedDueDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.projectRequestedDueDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.projectOfferedPaymentAmount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.projectOfferedPaymentAmount)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PaymentMethod.projectPaymentMethod)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PaymentMethod.projectPaymentMethod)
+            </dd>
+
+        </dl>
+        @*<div class="form-group">
             @Html.LabelFor(model => model.projectName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.projectName, new { htmlAttributes = new { @class = "form-control" } })
@@ -30,14 +86,6 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.projectClientID, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.projectClientID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.projectCategoryID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("projectCategoryID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.projectCategoryID, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -58,14 +106,6 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.projectPaymentTypeID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("projectPaymentTypeID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.projectPaymentTypeID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.projectOfferedPaymentAmount, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.projectOfferedPaymentAmount, new { htmlAttributes = new { @class = "form-control" } })
@@ -78,6 +118,14 @@
             <div class="col-md-10">
                 @Html.DropDownList("projectPaymentMethodID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.projectPaymentMethodID, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.projectCategoryID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("projectCategoryID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.projectCategoryID, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -98,7 +146,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Return to Project Calendar", "ProjectCalendar")
 </div>
 
 @section Scripts {

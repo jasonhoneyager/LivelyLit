@@ -240,17 +240,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201609141707410_initial.cs" />
-    <Compile Include="Migrations\201609141707410_initial.Designer.cs">
-      <DependentUpon>201609141707410_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201609141743570_update1.cs" />
-    <Compile Include="Migrations\201609141743570_update1.Designer.cs">
-      <DependentUpon>201609141743570_update1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201609142017431_update2.cs" />
-    <Compile Include="Migrations\201609142017431_update2.Designer.cs">
-      <DependentUpon>201609142017431_update2.cs</DependentUpon>
+    <Compile Include="Migrations\201609252214129_initial.cs" />
+    <Compile Include="Migrations\201609252214129_initial.Designer.cs">
+      <DependentUpon>201609252214129_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -259,7 +251,6 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PaymentMethodModels.cs" />
-    <Compile Include="Models\PaymentTypeModels.cs" />
     <Compile Include="Models\ProjectModels.cs" />
     <Compile Include="Models\ProjectStatusModels.cs" />
     <Compile Include="Models\ProjectViewModels.cs" />
@@ -315,6 +306,8 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\Backgrounds\lined_paper.png" />
+    <Content Include="Images\Photos\Kansas-City-Public-Library-Missouri_1.jpg" />
+    <Content Include="Images\Photos\Lively-Lit-Logo.jpg" />
     <Content Include="JQuery\fullcalendar.css" />
     <Content Include="JQuery\fullcalendar.js" />
     <Content Include="JQuery\fullcalendar.min.css" />
@@ -389,6 +382,7 @@
     <Content Include="Views\Project\Edit.cshtml" />
     <Content Include="Views\Project\Index.cshtml" />
     <Content Include="Views\Project\ProjectCalendar.cshtml" />
+    <Content Include="Views\Project\Change.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -402,14 +396,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609141707410_initial.resx">
-      <DependentUpon>201609141707410_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609141743570_update1.resx">
-      <DependentUpon>201609141743570_update1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609142017431_update2.resx">
-      <DependentUpon>201609142017431_update2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201609252214129_initial.resx">
+      <DependentUpon>201609252214129_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

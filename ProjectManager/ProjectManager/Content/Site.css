@@ -1,5 +1,4 @@
 ﻿body {
-    padding-top: 50px;
     padding-bottom: 20px;
 }
 
@@ -26,4 +25,56 @@ textarea {
 .multi-line {
     max-width: 50%;
     resize: none;
+}
+
+.banner {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #ffffff;
+    border-left: 10px solid #061649;
+    border-right: 10px solid #0d94fa;
+    border-top: 10px solid #07107a;
+}
+
+.page-info {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #eeeeee;
+}
+
+.border-right {
+    border-right: 1px solid #000000;
+}
+.borders {
+    border-left: 1px solid #000000;
+    border-right: 1px solid #000000;
+    margin: -1px;
+}
+.border-left {
+    border-left: 1px solid #000000;
+}
+
+img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.admin-buffer {
+    padding-top: 50px;
+}
+
+.top {
+    border-top: 10px solid #07107a;
+}
+
+.left {
+    border-left: 10px solid #061649;
+}
+
+.right {
+    border-right: 10px solid #0d94fa;
 }

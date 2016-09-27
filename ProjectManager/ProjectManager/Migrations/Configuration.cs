@@ -26,11 +26,6 @@ namespace ProjectManager.Migrations
                 new Models.ProjectStatusModels { projectStatusName = "Completed, Payment Received" }
                 );
 
-            context.PaymentTypeModels.AddOrUpdate(p => p.projectPaymentType,
-                new PaymentTypeModels { projectPaymentType = "Per Word" },
-                new PaymentTypeModels { projectPaymentType = "Up Front" }
-                );
-
             context.PaymentMethodModels.AddOrUpdate(p => p.projectPaymentMethod,
                 new PaymentMethodModels { projectPaymentMethod = "PayPal" },
                 new PaymentMethodModels { projectPaymentMethod = "Check" },
@@ -50,9 +45,10 @@ namespace ProjectManager.Migrations
             {
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
-                var user = new ApplicationUser { UserName = "writer@writer.com" };
+                var user = new ApplicationUser { UserName = "writer@writer.com"};
+                
 
-                manager.Create(user, password: "writerpass1");
+                manager.Create(user, password: "Writer#1");
                 manager.AddToRole(user.Id, "Writer");
                 //  This method will be called after migrating to the latest version.
 
