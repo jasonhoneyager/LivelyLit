@@ -1,17 +1,17 @@
 ﻿@model ProjectManager.Models.ProjectModels
 
 @{
-    ViewBag.Title = "Change";
+    ViewBag.Title = "Change Project";
 }
 
-<h2>Change</h2>
+<h2>Change Project</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>ProjectModels</h4>
+        <p>Any changes made to approved projects at this point will send the project back for further reviews, and may delay completion.</p>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ID)
@@ -75,14 +75,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-success" />
             </div>
         </div>
 </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <a class="btn btn-primary" href="@Url.Action("Index", "Project")">Return to Project List</a>
 </div>
 
 @section Scripts {

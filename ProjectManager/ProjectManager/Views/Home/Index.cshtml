@@ -28,52 +28,55 @@
 </div>
 <div class="container page-info">
     <div class="row left right">
-        <div class="col-lg-8">
+        <div class="col-lg-7">
             <img src="~/Images/Photos/Kansas-City-Public-Library-Missouri_1.jpg" />
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-5">
             <div class="row">
-                @Html.ActionLink("Request New", "Create", "Project")
+                <a href="@Url.Action("Create", "Project")"><img src="~/Images/Photos/bookend.jpg" maxwidth="100%" /></a>
             </div>
-            <br />
             <div class="row">
-                @Html.ActionLink("View Pending", "Index", "Project")
+                <a href="@Url.Action("Index", "Project")"><img src="~/Images/Photos/bookend.jpg" maxwidth="100%" /></a>
             </div>
-            <br />
             <div class="row">
-                @Html.ActionLink("Project", "Create", "Project")
+                <a href="@Url.Action("Create", "Project")"><img src="~/Images/Photos/bookend.jpg" maxwidth="100%" /></a>
             </div>
-            <br />
             <div class="row">
-                @Html.ActionLink("Project", "Create", "Project")
+                <a href="@Url.Action("Create", "Project")"><img src="~/Images/Photos/bookend.jpg" maxwidth="100%" /></a>
             </div>
-
         </div>
     </div>
 </div>
 <div class="container page-info">
     <div class="row">
         <div class="col-md-4 border-right">
-            <h2>About Michelle</h2>
-            <p>
-                I’ve been obsessed with stories and great writing for as long as I can remember.
-                I even have a BA in English professional writing from Mount Mary University here in Southeastern Wisconsin.
-                Starting Lively Literature Editorial and Writing Services was just a natural extension of my personality.
-            </p>
+            <center>
+                <h2>About Michelle</h2>
+                <p>
+                    I’ve been obsessed with stories and great writing for as long as I can remember.
+                    I even have a BA in English professional writing from Mount Mary University here in Southeastern Wisconsin.
+                    Starting Lively Literature Editorial and Writing Services was just a natural extension of my personality.
+                </p>
+            </center>
         </div>
         
         <div class="col-md-4 borders">
-            <h2>Publications</h2>
-            <p>
-                View my online portfolio, as well as some of my currently running articles.
-            </p>
-            <p><a class="btn btn-default" href="https://www.clippings.me/michellelovrine">Continue &raquo;</a></p>
+            <center>
+                <h2>Publications</h2>
+                <p>
+                    View my online portfolio, as well as some of my currently running articles.
+                </p>
+                <a href="https://www.clippings.me/michellelovrine"><img src="~/Images/Photos/portfolio.png" height="128"/></a>
+            </center>
         </div>
         
+        
         <div class="col-md-4 border-left">
-            <h2>Buy My Book</h2>
-            <p>I am also a self published fantasy author.  Find out more about my book, and how to purchase it here.</p>
-            
+            <center>
+                <h2>Buy My Book</h2>
+                <p>I am also a self published fantasy author.  Find out more about my book, and how to purchase it here.</p>
+                <a href="https://www.amazon.com/Eatheria-Michelle-Lovrine-ebook/dp/B00IRRNCT4"><img src="~/Images/Photos/secret-book-icon1.png" /></a>
+            </center>
         </div>
     </div>
 </div>

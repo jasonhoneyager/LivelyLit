@@ -1,18 +1,16 @@
 ﻿@model IEnumerable<ProjectManager.Models.CategoryModels>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Category";
 }
 
-<h2>Index</h2>
+<h2>Category</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.categoryName)
+            @Html.ActionLink("Create New", "Create")
         </th>
         <th></th>
     </tr>
@@ -23,9 +21,8 @@
             @Html.DisplayFor(modelItem => item.categoryName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            <a class="btn btn-warning" href ="@Url.Action("Edit", "Category", new { id=item.ID })">Edit</a> |
+            <a class="btn btn-danger" href="@Url.Action("Delete", "Category", new { id = item.ID })">Delete</a>
         </td>
     </tr>
 }

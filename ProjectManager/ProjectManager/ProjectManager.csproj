@@ -244,6 +244,10 @@
     <Compile Include="Migrations\201609252214129_initial.Designer.cs">
       <DependentUpon>201609252214129_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609301915365_update1.cs" />
+    <Compile Include="Migrations\201609301915365_update1.Designer.cs">
+      <DependentUpon>201609301915365_update1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CategoryModels.cs" />
@@ -306,8 +310,12 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\Backgrounds\lined_paper.png" />
+    <Content Include="Images\Photos\bookend.jpg" />
+    <Content Include="Images\Photos\desktopuser.jpg" />
     <Content Include="Images\Photos\Kansas-City-Public-Library-Missouri_1.jpg" />
     <Content Include="Images\Photos\Lively-Lit-Logo.jpg" />
+    <Content Include="Images\Photos\portfolio.png" />
+    <Content Include="Images\Photos\secret-book-icon1.png" />
     <Content Include="JQuery\fullcalendar.css" />
     <Content Include="JQuery\fullcalendar.js" />
     <Content Include="JQuery\fullcalendar.min.css" />
@@ -387,6 +395,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="JQuery\lib\" />
+    <Folder Include="Views\App\" />
+    <Folder Include="Views\Auth\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -398,6 +408,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201609252214129_initial.resx">
       <DependentUpon>201609252214129_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609301915365_update1.resx">
+      <DependentUpon>201609301915365_update1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

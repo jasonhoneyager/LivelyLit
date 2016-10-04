@@ -106,3 +106,4 @@ C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\bin\Zlib.
 C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.csprojResolveAssemblyReference.cache
 C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.Migrations.initial.resources
 C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.csproj.GenerateResource.Cache
+C:\Users\Jason\Documents\Repos\LivelyLit\ProjectManager\ProjectManager\obj\Debug\ProjectManager.Migrations.update1.resources

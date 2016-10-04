@@ -1,10 +1,11 @@
 ﻿@model IEnumerable<ProjectManager.Models.ProjectModels>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Open Projects";
 }
 
-<h2>Index</h2>
+<h2>Open Projects for @User.Identity.Name</h2>
+<p></p>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -65,8 +66,8 @@
             @Html.DisplayFor(modelItem => item.ProjectStatus.projectStatusName)
         </td>
         <td>
-            @Html.ActionLink("Change", "Change", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            <a class="btn btn-warning" href="@Url.Action("Change", "Project", new { id=item.ID })">Change</a> |
+            <a class="btn btn-danger" href="@Url.Action("Delete", "Project", new { id=item.ID })">Delete</a>
         </td>
     </tr>
 }
