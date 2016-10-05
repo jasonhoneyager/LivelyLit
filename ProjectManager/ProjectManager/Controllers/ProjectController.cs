@@ -8,6 +8,7 @@ using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using ProjectManager.Models;
+using Microsoft.AspNet.Identity;
 
 namespace ProjectManager.Controllers
 {
@@ -311,25 +312,39 @@ namespace ProjectManager.Controllers
 
         private string ConstructInvoice(ProjectModels currentModel)
         {
-            string body = currentModel.projectClientID +"\n\r\n\rThank you for choosing Lively Literature Editing and Writing Services.  Your requested project, "
-                +currentModel.projectName+", has been completed.  Please remit the agreed upon fee of $"+currentModel.projectOfferedPaymentAmount+" within 30 days of receiving this invoice to avoid any additional late payment fees"
-                +" I appreciate your business and hope to serve you again in the future!\n\r\n\rMichelle Lovrine\n\rLively Literature Editing and Writing Services";
+            var user = new ApplicationDbContext().Users.Find(User.Identity.GetUserId());
+            var client = new ApplicationDbContext().Users.Where(x => x.UserName == currentModel.projectClientID).SingleOrDefault();
+            string body = client.ContactName+"\n"+ client.CompanyName + "\n" + client.Street1 + "\n" + client.Street2 + "\n"
+                + client.City + ", " + client.State + "\n" + client.Zip + "\n" + client.Phone + "\n\n" + currentModel.projectClientID
+                +"\n\r\n\rThank you for choosing Lively Literature Editing and Writing Services.  Your requested project, "
+                +currentModel.projectName+", has been completed.  Please remit the agreed upon fee of $"
+                +currentModel.projectOfferedPaymentAmount+" within 30 days of receiving this invoice to avoid any additional late payment fees"
+                + " I appreciate your business and hope to serve you again in the future!\n\r\n\r" + user.ContactName + "\n\rLively Literature Editing and Writing Services";
             return body;
         }
 
         private string ConstructDecline(ProjectModels currentModel)
         {
-            string body = currentModel.projectClientID + "\n\r\n\rThank you for choosing Lively Literature Editing and Writing Services.  I regret to inform you that your requested project, "
-                + currentModel.projectName + ", has been has been declined.  Please refer to the following as to the reasoning behind the declination.\n\r\n\r" + currentModel.projectOfferedPaymentAmount + "\n\r\n\rIf you would like to renegotiate the terms of the project based on these issues, please feel free to edit the project by using the CHANGE option in the project manager.  The project will remain in the site for 14 days before being removed."
-                + " I appreciate your business and hope to serve you again in the future!\n\r\n\rMichelle Lovrine\n\rLively Literature Editing and Writing Services";
+            var user = new ApplicationDbContext().Users.Find(User.Identity.GetUserId());
+            var client = new ApplicationDbContext().Users.Where(x => x.UserName == currentModel.projectClientID).SingleOrDefault();
+            string body = client.ContactName + "\n" + client.CompanyName + "\n" + client.Street1 + "\n" + client.Street2 + "\n"
+                + client.City + ", " + client.State + "\n" + client.Zip + "\n" + client.Phone + "\n\n" + currentModel.projectClientID 
+                + "\n\r\n\rThank you for choosing Lively Literature Editing and Writing Services.  I regret to inform you that your requested project, "
+                + currentModel.projectName + ", has been has been declined.  Please refer to the following as to the reasoning behind the declination.\n\r\n\r"
+                + currentModel.projectOfferedPaymentAmount + "\n\r\n\rIf you would like to renegotiate the terms of the project based on these issues, please feel free to edit the project by using the CHANGE option in the project manager.  The project will remain in the site for 14 days before being removed."
+                + " I appreciate your business and hope to serve you again in the future!\n\r\n\r" + user.ContactName + "\n\rLively Literature Editing and Writing Services";
             return body;
         }
 
         private string ConstructThanks(ProjectModels currentModel)
         {
-            string body = currentModel.projectClientID + "\n\r\n\rThank you for choosing Lively Literature Editing and Writing Services.  I have received payment for the Project: "
-    + currentModel.projectName + " in the amount of $" + currentModel.projectOfferedPaymentAmount + ".  Thank you for your timely payment."
-    + " I appreciate your business and hope to serve you again in the future!\n\r\n\rMichelle Lovrine\n\rLively Literature Editing and Writing Services";
+            var user = new ApplicationDbContext().Users.Find(User.Identity.GetUserId());
+            var client = new ApplicationDbContext().Users.Where(x => x.UserName == currentModel.projectClientID).SingleOrDefault();
+            string body = client.ContactName + "\n" + client.CompanyName + "\n" + client.Street1 + "\n" + client.Street2 + "\n" 
+                + client.City + ", " + client.State + "\n" + client.Zip + "\n" + client.Phone + "\n\n" + currentModel.projectClientID 
+                + "\n\r\n\rThank you for choosing Lively Literature Editing and Writing Services.  I have received payment for the Project: "
+                + currentModel.projectName + " in the amount of $" + currentModel.projectOfferedPaymentAmount + ".  Thank you for your timely payment."
+                + " I appreciate your business and hope to serve you again in the future!\n\r\n\r" + user.ContactName + "\n\rLively Literature Editing and Writing Services";
             return body;
         }
     }
