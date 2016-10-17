@@ -4,7 +4,14 @@
     ViewBag.Title = "Open Projects";
 }
 
-<h2>Open Projects for @User.Identity.Name</h2>
+    @using Microsoft.AspNet.Identity
+    @Html.AntiForgeryToken()
+    @{
+        var user = new ProjectManager.Models.ApplicationDbContext().Users.Find(User.Identity.GetUserId());
+    }
+
+
+<h2>Open Projects for @user.CompanyName</h2>
 <p></p>
 
 <p>

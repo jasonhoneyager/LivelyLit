@@ -78,3 +78,10 @@ img {
 .right {
     border-right: 10px solid #0d94fa;
 }
+
+.no-buffer{
+    padding-left:0px;
+    padding-right:0px;
+    padding-top:0px;
+    padding-bottom:0px;
+}
