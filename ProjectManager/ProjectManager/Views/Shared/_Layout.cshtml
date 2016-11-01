@@ -36,13 +36,9 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                             <li>@Html.ActionLink("Project", "Create", "Project")</li>                            
-                            <li>@Html.ActionLink("Available Projects", "ProjectCalendar", "Project")</li>
-                            <li>@Html.ActionLink("Create Category", "Create", "Category")</li>
-                            @*<li>@Html.ActionLink("", "", "")</li>*@
-                            
+                            <li>@Html.ActionLink("Project Calendar", "ProjectCalendar", "Project")</li>
+                            <li>@Html.ActionLink("Create Category", "Create", "Category")</li>                            
                         </ul>
                         @Html.Partial("_LoginPartial")
                     </div>

@@ -240,13 +240,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201609252214129_initial.cs" />
-    <Compile Include="Migrations\201609252214129_initial.Designer.cs">
-      <DependentUpon>201609252214129_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201610202004509_initial.cs" />
+    <Compile Include="Migrations\201610202004509_initial.Designer.cs">
+      <DependentUpon>201610202004509_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201609301915365_update1.cs" />
-    <Compile Include="Migrations\201609301915365_update1.Designer.cs">
-      <DependentUpon>201609301915365_update1.cs</DependentUpon>
+    <Compile Include="Migrations\201610310038095_update1.cs" />
+    <Compile Include="Migrations\201610310038095_update1.Designer.cs">
+      <DependentUpon>201610310038095_update1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -391,6 +391,7 @@
     <Content Include="Views\Project\Index.cshtml" />
     <Content Include="Views\Project\ProjectCalendar.cshtml" />
     <Content Include="Views\Project\Change.cshtml" />
+    <Content Include="Views\Project\Denial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -406,11 +407,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609252214129_initial.resx">
-      <DependentUpon>201609252214129_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610202004509_initial.resx">
+      <DependentUpon>201610202004509_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609301915365_update1.resx">
-      <DependentUpon>201609301915365_update1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610310038095_update1.resx">
+      <DependentUpon>201610310038095_update1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

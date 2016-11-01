@@ -151,7 +151,7 @@ namespace ProjectManager.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, CompanyName = model.CompanyName, ContactName = model.ContactName, Street1 = model.Street1, Street2 = model.Street2, City = model.City, State = model.State, Zip = model.Zip, Phone = model.Phone };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

@@ -9,12 +9,10 @@
     </div>
     <div class="col-md-1"></div>
     <div class="col-md-7">
-        <h1>Lively Literature</h1>
-        <p>Title page</p>
         @using Microsoft.AspNet.Identity
         @if (Request.IsAuthenticated)
         {
-            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm"}))
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right"}))
             {
                 @Html.AntiForgeryToken()
                 var user = new ApplicationDbContext().Users.Find(User.Identity.GetUserId());
@@ -22,30 +20,22 @@
                 <a class="btn btn-default" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
             }
         }
-        else
+        @*else
         {
             @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
-        }
+        }*@
     </div>
 </div>
 <div class="container page-info">
     <div class="row left right">
         <div class="col-md-7 no-buffer">
-            <img src="~/Images/Photos/Kansas-City-Public-Library-Missouri_1.jpg" maxwidth="100%"/>
+            <img src="~/Images/Photos/library.jpg" style ="width:100%;"/>
         </div>
-        <div class="col-md-5">
-            <div class="row">
-                <a href="@Url.Action("Create", "Project")"><img src="~/Images/Photos/bookend.jpg" maxheight="25%" maxwidth="100%" /></a>
-            </div>
-            <div class="row">
-                <a href="@Url.Action("Index", "Project")"><img src="~/Images/Photos/bookend.jpg" maxheight="25%" maxwidth="100%" /></a>
-            </div>
-            <div class="row">
-                <a href="@Url.Action("Create", "Project")"><img src="~/Images/Photos/bookend.jpg" maxheight="25%" maxwidth="100%" /></a>
-            </div>
-            <div class="row">
-                <a href="@Url.Action("Create", "Project")"><img src="~/Images/Photos/bookend.jpg" maxheight="25%" maxwidth="100%" /></a>
-            </div>
+        <div class="col-md-5 no-buffer">
+            <a href="@Url.Action("Create", "Project")"><img src="~/Images/Photos/newproject.jpg" style="height:91px; width:465px;" /></a>
+            <a href="@Url.Action("Index", "Project")"><img src="~/Images/Photos/projectmanager.jpg" style="height:91px; width:465px;" /></a>
+            <a href="@Url.Action("Register", "Account")"><img src="~/Images/Photos/register.jpg" style="height:91px; width:465px;" /></a>
+            <a href="@Url.Action("Login", "Account")"><img src="~/Images/Photos/login.jpg" style="height:91px; width:465px;" /></a>
         </div>
     </div>
 </div>

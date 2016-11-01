@@ -81,7 +81,7 @@ namespace ProjectManager.Controllers
                 }
                 if (project.projectStatusID == 5)
                 {
-                    events.color = "yellow";
+                    events.color = "orange";
                 }
                 if (project.projectStatusID == 6)
                 {
@@ -168,7 +168,19 @@ namespace ProjectManager.Controllers
             {
                 if (projectModels.projectStatusID == 2) //calendar change to declined
                 {
-                    SendEmail(projectModels, "declined");
+                    db.Entry(projectModels).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToRoute(new
+                    {
+                        Controller = "Project",
+                        Action = "Denial",
+                        id = projectModels.ID
+                    });
+                    //SendEmail(projectModels, "declined");
+                }
+                if (projectModels.projectStatusID == 3) //calendar change to accepted
+                {
+                    SendEmail(projectModels, "accepted");
                 }
                 if (projectModels.projectStatusID == 5) //calendar change to complete awaiting payment
                 {
@@ -185,6 +197,31 @@ namespace ProjectManager.Controllers
             ViewBag.projectCategoryID = new SelectList(db.CategoryModels, "ID", "categoryName", projectModels.projectCategoryID);
             ViewBag.projectStatusID = new SelectList(db.ProjectStatusModels, "ID", "projectStatusName", projectModels.projectStatusID);
             ViewBag.projectPaymentMethodID = new SelectList(db.PaymentMethodModels, "ID", "projectPaymentMethod", projectModels.projectPaymentMethodID);
+            return View(projectModels);
+        }
+
+        public ActionResult Denial(ProjectModels projectModels, int? id)
+        {
+            if (projectModels == null)
+            {
+                return HttpNotFound();
+            }
+            return View(db.ProjectModels.Find(id));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Denial(ProjectModels projectModels)
+        {
+            var model = db.ProjectModels.Find(projectModels.ID);
+            model.projectDenial = projectModels.projectDenial;
+            if (ModelState.IsValid)
+            {
+                db.Entry(model).State = EntityState.Modified;
+                db.SaveChanges();
+                SendEmail(projectModels, "declined");
+                return RedirectToAction("ProjectCalendar");
+            }
             return View(projectModels);
         }
 
@@ -212,6 +249,7 @@ namespace ProjectManager.Controllers
             if (ModelState.IsValid)
             {
                 projectModels.projectStatusID = 1;
+                projectModels.projectClientID = User.Identity.Name;
                 db.Entry(projectModels).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -267,6 +305,10 @@ namespace ProjectManager.Controllers
             {
                 subject = "Invoice - Project: " + currentModel.projectName + " Completed.";
             }
+            if (status == "accepted")
+            {
+                subject = "Details - Project: " + currentModel.projectName + " Accepted";
+            }
             if (status == "declined")
             {
                 subject = "Details - Project: " + currentModel.projectName + " Declined";
@@ -281,7 +323,10 @@ namespace ProjectManager.Controllers
             {
                 body = ConstructInvoice(currentModel);
             }
-               
+            if (status == "accepted")
+            {
+                body = ConstructAccept(currentModel);
+            }   
             if (status == "declined")
             {
                 body = ConstructDecline(currentModel);
@@ -325,13 +370,14 @@ namespace ProjectManager.Controllers
 
         private string ConstructDecline(ProjectModels currentModel)
         {
+            currentModel = db.ProjectModels.Find(currentModel.ID);
             var user = new ApplicationDbContext().Users.Find(User.Identity.GetUserId());
             var client = new ApplicationDbContext().Users.Where(x => x.UserName == currentModel.projectClientID).SingleOrDefault();
             string body = client.ContactName + "\n" + client.CompanyName + "\n" + client.Street1 + "\n" + client.Street2 + "\n"
                 + client.City + ", " + client.State + "\n" + client.Zip + "\n" + client.Phone + "\n\n" + currentModel.projectClientID 
                 + "\n\r\n\rThank you for choosing Lively Literature Editing and Writing Services.  I regret to inform you that your requested project, "
                 + currentModel.projectName + ", has been has been declined.  Please refer to the following as to the reasoning behind the declination.\n\r\n\r"
-                + currentModel.projectOfferedPaymentAmount + "\n\r\n\rIf you would like to renegotiate the terms of the project based on these issues, please feel free to edit the project by using the CHANGE option in the project manager.  The project will remain in the site for 14 days before being removed."
+                + currentModel.projectDenial + "\n\r\n\rIf you would like to renegotiate the terms of the project based on these issues, please feel free to edit the project by using the CHANGE option in the project manager.  The project will remain in the site for 14 days before being removed."
                 + " I appreciate your business and hope to serve you again in the future!\n\r\n\r" + user.ContactName + "\n\rLively Literature Editing and Writing Services";
             return body;
         }
@@ -345,6 +391,19 @@ namespace ProjectManager.Controllers
                 + "\n\r\n\rThank you for choosing Lively Literature Editing and Writing Services.  I have received payment for the Project: "
                 + currentModel.projectName + " in the amount of $" + currentModel.projectOfferedPaymentAmount + ".  Thank you for your timely payment."
                 + " I appreciate your business and hope to serve you again in the future!\n\r\n\r" + user.ContactName + "\n\rLively Literature Editing and Writing Services";
+            return body;
+        }
+
+        private string ConstructAccept(ProjectModels currentModel)
+        {
+            var user = new ApplicationDbContext().Users.Find(User.Identity.GetUserId());
+            var client = new ApplicationDbContext().Users.Where(x => x.UserName == currentModel.projectClientID).SingleOrDefault();
+            string body = client.ContactName + "\n" + client.CompanyName + "\n" + client.Street1 + "\n" + client.Street2 + "\n"
+                + client.City + ", " + client.State + "\n" + client.Zip + "\n" + client.Phone + "\n\n" + currentModel.projectClientID
+                + "\n\r\n\rThank you for choosing Lively Literature Editing and Writing Services.  I pleased to inform you that your requested project, "
+                + currentModel.projectName + ", has been has been accepted.  Work will begin on the project shortly, and you can expect the completion of the project by the requested due date."+
+                "If you have any qustions or concerns about this project going forward, please contact me directly at mlovrine@livelylit.com and reference the project title in the subject line.  Further editing of the project online may delay the completion of your project.\n\r"+
+                "I appreciate your business and hope to serve you again in the future!\n\r\n\r" + user.ContactName + "\n\rLively Literature Editing and Writing Services";
             return body;
         }
     }

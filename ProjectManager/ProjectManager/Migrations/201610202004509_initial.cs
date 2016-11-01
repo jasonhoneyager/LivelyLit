@@ -84,6 +84,14 @@ namespace ProjectManager.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        CompanyName = c.String(),
+                        ContactName = c.String(),
+                        Street1 = c.String(),
+                        Street2 = c.String(),
+                        City = c.String(),
+                        State = c.String(),
+                        Zip = c.String(),
+                        Phone = c.String(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),

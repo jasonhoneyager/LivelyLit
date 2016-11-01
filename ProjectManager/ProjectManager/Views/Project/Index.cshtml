@@ -10,8 +10,7 @@
         var user = new ProjectManager.Models.ApplicationDbContext().Users.Find(User.Identity.GetUserId());
     }
 
-
-<h2>Open Projects for @user.CompanyName</h2>
+<h2>Open Projects @*for @user.CompanyName*@</h2>
 <p></p>
 
 <p>

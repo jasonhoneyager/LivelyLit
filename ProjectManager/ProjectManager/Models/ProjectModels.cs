@@ -42,5 +42,8 @@ namespace ProjectManager.Models
         public int projectStatusID { get; set; }
         public virtual ProjectStatusModels ProjectStatus { get; set; }
 
+        [DataType(DataType.MultilineText)]
+        [Display(Name = "Reason For Denial: ")]
+        public string projectDenial { get; set; }
     }
 }

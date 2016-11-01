@@ -45,7 +45,7 @@ namespace ProjectManager.Migrations
             {
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
-                var user = new ApplicationUser { UserName = "writer@writer.com", CompanyName = "Lively Literature", ContactName = "Michelle Lovrine", Street1 = "1605 Chestnut Ln", Street2 = "Waukesha", State = "WI", Zip = "53189", Phone = "262-565-8667" };
+                var user = new ApplicationUser { UserName = "writer@writer.com", CompanyName = "Lively Literature", ContactName = "Michelle Lovrine", Street1 = "1605 Chestnut Ln", City = "Waukesha", State = "WI", Zip = "53189", Phone = "262-565-8667" };
                 
 
                 manager.Create(user, password: "Writer#1");
